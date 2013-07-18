@@ -1,0 +1,20 @@
+%h1 Scrabble-Web
+
+- if @last_word
+  #last_word
+    %h3 Results
+    = render @last_word
+
+%h3 Score a Word
+= form_for @new_word do |f|
+  = f.text_field :word
+  = f.submit "Score"
+
+#previous_words
+  %h3 Previous Words
+  %ul
+    - @previous_words.each do |word|
+      %li
+        = word.word
+        \:
+        = word.score
