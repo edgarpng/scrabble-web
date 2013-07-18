@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe "the basic scoring of a word" do
   describe "/words" do
-    xit "allows the input of a word and returns a score" do
+    it "allows the input of a word and returns a score" do
       visit '/words'
       fill_in 'word[word]', :with => "HELLO"
       click_link_or_button 'Score'
