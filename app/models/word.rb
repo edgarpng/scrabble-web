@@ -2,6 +2,9 @@ class Word < ActiveRecord::Base
 
   before_save :downcase, :compute_score
   attr_accessible :word, :score
+  validates :word,
+    presence: true,
+    format: /\A[a-zA-Z]+\z/
 
   private
 

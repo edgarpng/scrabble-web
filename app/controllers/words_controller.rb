@@ -7,8 +7,10 @@ class WordsController < ApplicationController
 
   def create
     @last_word = Word.new(params[:word])
-    if @last_word.save!
-      redirect_to words_path
+    @last_word.save
+    unless @last_word.valid?
+      flash[:error] = "Sorry, please enter at least one word made up of only letters"
     end
+    redirect_to words_path
   end
 end
