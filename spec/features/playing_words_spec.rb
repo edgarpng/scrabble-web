@@ -9,7 +9,7 @@ describe "recording the playing of a word" do
         click_link_or_button 'Score'
       end
 
-      xit "can record" do
+      it "can record" do
         visit '/words'
         within("#word-hello") do
           click_link_or_button('Play')
@@ -21,7 +21,7 @@ describe "recording the playing of a word" do
         end
       end
 
-      xit "has a time stamp" do
+      it "has a time stamp" do
         visit '/words'
         within("#word-hello") do
           click_link_or_button('Play')
@@ -35,7 +35,7 @@ describe "recording the playing of a word" do
         end
       end
 
-      xit "can happen multiple times" do
+      it "can happen multiple times" do
         3.times do
           visit '/words'
           within("#word-hello") do
@@ -49,7 +49,7 @@ describe "recording the playing of a word" do
         end
       end
 
-      xit "has multiple time stamps" do
+      it "has multiple time stamps" do
         visit '/words'
 
         [2, 1, 0].each do |offset|

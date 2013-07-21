@@ -11,13 +11,21 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130605181234) do
+ActiveRecord::Schema.define(:version => 20130720214850) do
+
+  create_table "plays", :force => true do |t|
+    t.integer  "word_id"
+    t.datetime "date"
+  end
+
+  add_index "plays", ["word_id"], :name => "index_plays_on_word_id"
 
   create_table "words", :force => true do |t|
     t.string   "word"
     t.integer  "score"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
+    t.integer  "plays_count", :default => 0, :null => false
   end
 
 end

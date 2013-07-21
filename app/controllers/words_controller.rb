@@ -13,4 +13,12 @@ class WordsController < ApplicationController
     end
     redirect_to words_path
   end
+
+  def play
+    @word = Word.find(params[:id])
+    @word.plays << Play.new
+    @word.save
+
+    redirect_to words_path
+  end
 end

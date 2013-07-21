@@ -2,21 +2,22 @@ class Word < ActiveRecord::Base
 
   before_save :downcase, :compute_score
   attr_accessible :word, :score
+  has_many :plays
   validates :word,
     presence: true,
     format: /\A[a-zA-Z]+\z/
-
-  private
-
-  def word_params
-    params.require(:word).permit(:word)
-  end
 
   def compute_score
     self.score = 0
     self.word.each_char do |char|
       self.score += letter_scores[char]
     end
+  end
+  
+  private
+
+  def word_params
+    params.require(:word).permit(:word)
   end
 
   def letter_scores

@@ -17,7 +17,13 @@
   %h3 Previous Words
   %ul
     - @previous_words.each do |word|
-      %li
+      %li{:id => "word-#{word.word}"}
         = word.word
         \:
         = word.score
+        %br
+        = button_to "Play", play_word_path(word)
+        Plays: 
+        = word.plays.size
+        %br
+        = render word.plays
