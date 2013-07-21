@@ -13,7 +13,7 @@ class Word < ActiveRecord::Base
       self.score += letter_scores[char]
     end
   end
-  
+
   private
 
   def word_params
