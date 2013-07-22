@@ -1,8 +1,5 @@
 %h1 Scrabble-Web
 
-#flash
-  = flash[:error]
-
 - if @last_word
   #last_word
     %h3 Results
@@ -16,14 +13,4 @@
 #previous_words
   %h3 Previous Words
   %ul
-    - @previous_words.each do |word|
-      %li{:id => "word-#{word.word}"}
-        = word.word
-        \:
-        = word.score
-        %br
-        = button_to "Play", play_word_path(word)
-        Plays: 
-        = word.plays.size
-        %br
-        = render word.plays
+    = render collection: @previous_words, partial: "words/word_play"
