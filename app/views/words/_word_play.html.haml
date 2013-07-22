@@ -1,10 +1,13 @@
 %li{:id => "word-#{word_play.word}"}
-  = word_play.word
+  %span.play-word
+    = word_play.word
   \:
   = word_play.score
   %br
-  = button_to "Play", play_word_path(word_play)
+  = button_to "Play", play_word_path(word_play), class: "button small"
   Plays: 
   = word_play.plays.size
   %br
-  = render word_play.plays
+  .dates
+    = render word_play.plays
+  %hr

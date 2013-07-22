@@ -1,16 +1,31 @@
-%h1 Scrabble-Web
+#header
+  .row
+    %h1 Scrabble-Web
 
-- if @last_word
-  #last_word
-    %h3 Results
-    = render @last_word
+#content
+  .row
+    - if flash[:error]
+      #flash
+        = flash[:error]
 
-%h3 Score a Word
-= form_for @new_word do |f|
-  = f.text_field :word
-  = f.submit "Score"
+    %h3 Score a Word
+    = form_for @new_word do |f|
+      = f.text_field :word
+      = f.submit "Score", class: "button small blue"
 
-#previous_words
-  %h3 Previous Words
-  %ul
-    = render collection: @previous_words, partial: "words/word_play"
+    - if @last_word
+      #last_word
+        %h3 Last word
+        = render @last_word
+      %hr
+
+    #previous_words
+      %h3 Previous Words
+      %ul.panel
+        = render collection: @previous_words, partial: "words/word_play"
+
+#footer
+  .row
+    A little assessment project from
+    %a{href: "http://tutorials.jumpstartlab.com/academy/workshops/scrabble-web.html"}
+      JumpstartLab
